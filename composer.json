@@ -1,0 +1,108 @@
+{
+  "name": "signwo/social_commerce_template",
+  "description": "Open Social project template with commerce for composer based projects.",
+  "type": "project",
+  "license": "GPL-3.0+",
+  "authors": [
+    {
+      "name": "Truls S. Yggeseth",
+      "email": "truls@signwo.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "composer/installers": "^1.6",
+    "drupal/commerce": "2.13",
+    "drupal/commerce_license":"2.0-alpha18",
+    "drupal-composer/drupal-scaffold": "^2.6.1",
+    "cweagans/composer-patches": "^1.0",
+    "goalgorilla/open_social": "4.9",
+    "doctrine/cache": "1.6.1",
+    "doctrine/collections": "1.4.0",
+    "doctrine/common": "2.7.2",
+    "php": "^7.0",
+    "doctrine/inflector": "1.1.0",
+    "drush/drush": "^9"
+  },
+  "require-dev": {
+    "drupal/drupal-extension": "~3.0",
+    "drupal/stage_file_proxy": "^1.0@alpha",
+    "eiriksm/wait-for-listen": "^1.0",
+    "webflo/drupal-core-require-dev": "8.6.14"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    },
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "scripts": {
+    "post-install-cmd": [
+      "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
+    ],
+    "post-update-cmd": [
+      "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
+    ],
+    "test": [
+      "./vendor/bin/phpcs -p",
+      "./vendor/bin/behat --colors"
+    ],
+    "import": [
+      "./vendor/bin/drush --root=$(pwd)/html cc drush",
+      "./vendor/bin/drush --root=$(pwd)/html cim -y"
+    ],
+    "export": [
+      "./vendor/bin/drush --root=$(pwd)/html cex -y"
+    ],
+    "build": [
+      "git pull",
+      "@composer install --no-dev",
+      "./vendor/bin/drush --root=$(pwd)/html updb -y",
+      "@composer import",
+      "./vendor/bin/drush --root=$(pwd)/html cr"
+    ],
+    "sec": [
+      "./vendor/bin/drush sec"
+    ],
+    "resetadmin": [
+      "./vendor/bin/drush uli"
+    ]
+  },
+  "extra": {
+    "installer-types": [
+      "bower-asset",
+      "npm-asset"
+    ],
+    "installer-paths": {
+      "html/core": [
+        "drupal/core"
+      ],
+      "html/modules/contrib/{$name}": [
+        "type:drupal-module"
+      ],
+      "html/profiles/contrib/social": [
+        "goalgorilla/open_social"
+      ],
+      "html/profiles/contrib/{$name}": [
+        "type:drupal-profile"
+      ],
+      "html/themes/contrib/{$name}": [
+        "type:drupal-theme"
+      ],
+      "html/libraries/{$name}": [
+        "type:drupal-library",
+        "type:bower-asset",
+        "type:npm-asset"
+      ],
+      "drush/contrib/{$name}": [
+        "type:drupal-drush"
+      ]
+    },
+    "enable-patching": true
+  }
+}
