@@ -5,5 +5,15 @@ php:
   - '7.1'
   - '7.2'
   - '7.3'
+
+before_install:
+  # Composer Configurations.
+  - export COMPOSER_MEMORY_LIMIT=-1 # Set php memory limit to -1 so composer update will not fail
+  - export COMPOSER_EXIT_ON_PATCH_FAILURE=1 # To enforce throwing an error and stopping package installation/update immediately
+  - composer self-update
+  - composer --version
+  - composer global require hirak/prestissimo
+  - composer global require zaporylie/composer-drupal-optimizations:^1.0
+
 install:
   - composer install --dev --no-interaction
