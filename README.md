@@ -1,4 +1,7 @@
+[![Packagist](https://img.shields.io/packagist/v/signwo/social_commerce_template.svg?maxAge=3600)](https://packagist.org/packages/signwo/social_commerce_template)
+[![Packagist](https://img.shields.io/packagist/dt/signwo/social_commerce_template.svg?maxAge=3600)](https://packagist.org/packages/signwo/social_commerce_template)
 [![Violinist enabled](https://img.shields.io/badge/violinist-enabled-brightgreen.svg)](https://violinist.io)
+[![Build Status](https://travis-ci.com/SignWo/social_commerce_template.svg?branch=master)](https://travis-ci.com/SignWo/social_commerce_template)
 
 # An Open Social + Commerce composer template
 
