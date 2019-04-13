@@ -20,7 +20,7 @@
     "goalgorilla/open_social": "4.9",
     "doctrine/cache": "1.6.1",
     "doctrine/collections": "1.4.0",
-    "doctrine/common": "2.7.2",
+    "doctrine/common": "v2.10.0",
     "php": "^7.0",
     "doctrine/inflector": "1.1.0",
     "drush/drush": "^9"
