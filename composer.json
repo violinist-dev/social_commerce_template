@@ -14,7 +14,7 @@
   "require": {
     "composer/installers": "^1.6",
     "drupal/commerce": "2.13",
-    "drupal/commerce_license":"2.0-alpha18",
+    "drupal/commerce_license":"2.0.0-alpha19",
     "drupal-composer/drupal-scaffold": "^2.6.1",
     "cweagans/composer-patches": "^1.0",
     "goalgorilla/open_social": "4.9",
